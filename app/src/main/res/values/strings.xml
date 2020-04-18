@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Semenov_A2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -12,4 +11,54 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+
+    <string name="app_name">Погодное приложение</string>
+    <string name="region">Milan</string>
+    <string name="region_en">Moscow, Russia</string>
+    <string name="temperature">+_</string>
+    <string name="switch_to_english">english</string>
+    <string name="switch_to_russian">русский</string>
+    <string name="weather_map_show">показать на карте</string>
+    <string name="plus_1_day">Завтра</string>
+    <string name="plus_2_days">Послезавтра</string>
+    <string name="plus_3_days">Через 3 дня</string>
+    <string name="plus_4_days">Через 4 дня</string>
+    <string name="plus_5_days">Через 5 дней</string>
+    <string name="plus_6_days">Через 6 дней</string>
+    <string name="plus_7_days">Через 7 дней</string>
+    <string name="atmo_pressure">___ мм/рт ст</string>
+    <string name="atmo_pressure_null"> </string>
+    <string name="wind">__ м/с</string>
+    <string name="wind_null"> </string>
+    <string name="town_edit_text_hint">Введите название города</string>
+    <string name="textview_town_select_title">Выбор города</string>
+    <string name="checkbox_wind_title">скорость ветра</string>
+    <string name="checkbox_atmo_title">атмосферное давление</string>
+    <string name="button_back">Назад</string>
+    <string name="button_help">help</string>
+    <string name="button_options_select_title">Изменить</string>
+    <string name="desc">any_image</string>
+    <string name="button_go_url">посмотреть погоду в яндексе</string>
+
+    <string-array name="list_of_towns">
+        <item>Москва</item>
+        <item>Лондон</item>
+        <item>Париж</item>
+        <item>Рим</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="place_not_found">Указанное месторасположение не найдено</string>
+
+    <string name="change_city">Change city</string>
+    <string name="weather_sunny">&#xf00d;</string>
+    <string name="weather_clear_night">&#xf02e;</string>
+    <string name="weather_foggy">&#xf014;</string>
+    <string name="weather_cloudy">&#xf013;</string>
+    <string name="weather_rainy">&#xf019;</string>
+    <string name="weather_snowy">&#xf01b;</string>
+    <string name="weather_thunder">&#xf01e;</string>
+    <string name="weather_drizzle">&#xf01c;</string>
 </resources>

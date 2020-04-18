@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     private ImageView skyImageView;
     private boolean isPressureShow = true;
     private boolean isWindShow = true;
-    private MaterialButton goOptionsSelectActivityBtn;
+    private Button goOptionsSelectActivityBtn;
 
     private final Handler handler = new Handler();
     //private final static String LOG_TAG = MainActivity.class.getSimpleName();
@@ -67,17 +67,17 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        townTextView = view.findViewById(R.id.townTextView);
-//        temperatureTextView = view.findViewById(R.id.temperatureTextView);
-//        pressureTextView = view.findViewById(R.id.pressureTextView);
-//        windTextView = view.findViewById(R.id.windTextView);
-//        skyTexView = view.findViewById(R.id.skyTextView);
-//        skyImageView = view.findViewById(R.id.skyImageView);
-//        goOptionsSelectActivityBtn = view.findViewById(R.id.goOptionsSelectActivityBtn);
-//
-//        initFonts();
-//        updateWeatherData(townTextView.getText().toString());
+        super.onViewCreated(view, savedInstanceState);
+        townTextView = view.findViewById(R.id.townTextView);
+        temperatureTextView = view.findViewById(R.id.temperatureTextView);
+        pressureTextView = view.findViewById(R.id.pressureTextView);
+        windTextView = view.findViewById(R.id.windTextView);
+        skyTexView = view.findViewById(R.id.skyTextView);
+        skyImageView = view.findViewById(R.id.skyImageView);
+        goOptionsSelectActivityBtn = view.findViewById(R.id.goOptionsSelectActivityBtn);
+
+        initFonts();
+        updateWeatherData(townTextView.getText().toString());
     }
 
 

@@ -33,7 +33,7 @@
         android:id="@+id/nav_gallery"
         android:name="ru.geekbrains.android2.semenov_a2.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_options" />
 
     <fragment
         android:id="@+id/nav_slideshow"

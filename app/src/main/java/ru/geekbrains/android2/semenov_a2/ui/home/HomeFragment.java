@@ -88,12 +88,17 @@ public class HomeFragment extends Fragment {
         skyTexView.setTypeface(weatherFont);
     }
 
-
     private void setOnGoOptionsSelectBtnClick() {
         goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                townTextView.setText("Go");
+                townTextView.setVisibility(View.INVISIBLE);
+                temperatureTextView.setVisibility(View.INVISIBLE);
+                pressureTextView.setVisibility(View.INVISIBLE);
+                windTextView.setVisibility(View.INVISIBLE);
+                skyTexView.setVisibility(View.INVISIBLE);
+                skyImageView.setVisibility(View.INVISIBLE);
+                goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
                 GalleryFragment galleryFragment = new GalleryFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 //                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

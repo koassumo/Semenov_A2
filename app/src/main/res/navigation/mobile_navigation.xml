@@ -31,13 +31,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="ru.geekbrains.android2.semenov_a2.ui.gallery.GalleryFragment"
+        android:name="ru.geekbrains.android2.semenov_a2.ui.options.OptionsFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_options" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="ru.geekbrains.android2.semenov_a2.ui.slideshow.SlideshowFragment"
+        android:name="ru.geekbrains.android2.semenov_a2.ui.help.HelpFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_help" />
 </navigation>

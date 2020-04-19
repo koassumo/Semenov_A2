@@ -7,7 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <FrameLayout
-        android:id="@+id/infoDeskFrame"
+        android:id="@+id/mainContainerForFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="50">
@@ -39,8 +39,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/townTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/townTextView" />
-
-
 
             <ImageView
                 android:id="@+id/skyImageView"

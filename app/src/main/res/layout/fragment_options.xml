@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.options.OptionsFragment">
 
     <FrameLayout
-        android:id="@+id/infoDeskFrame"
+        android:id="@+id/mainContainerForFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="50">
@@ -16,6 +16,7 @@
             android:id="@+id/consLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/goBackMainActivityBtn"
                 android:layout_width="wrap_content"
@@ -38,15 +39,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/loginName"
+                style="@style/MarginStartEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/MarginStartEnd"
                 android:layout_marginTop="75dp"
                 app:errorEnabled="true"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,18 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/town_edit_text_hint"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!--    <Spinner-->
-            <!--        android:id="@+id/townSelectSpinner"-->
-            <!--        android:layout_width="wrap_content"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_marginStart="16dp"-->
-            <!--        android:layout_marginTop="16dp"-->
-            <!--        android:entries="@array/list_of_towns"-->
-            <!--        app:layout_constraintStart_toStartOf="parent"-->
-            <!--        app:layout_constraintTop_toBottomOf="@+id/loginName" />-->
 
             <CheckBox
                 android:id="@+id/windCheckBox"

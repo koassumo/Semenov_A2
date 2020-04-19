@@ -1,14 +1,14 @@
-package ru.geekbrains.android2.semenov_a2.ui.gallery;
+package ru.geekbrains.android2.semenov_a2.ui.options;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class OptionsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public OptionsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }

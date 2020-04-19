@@ -1,4 +1,4 @@
-package ru.geekbrains.android2.semenov_a2;
+package ru.geekbrains.android2.semenov_a2.ui.options;
 
 class Constants {
 

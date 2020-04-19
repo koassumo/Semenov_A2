@@ -1,10 +1,8 @@
 package ru.geekbrains.android2.semenov_a2.ui.home;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.material.button.MaterialButton;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +26,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import ru.geekbrains.android2.semenov_a2.R;
-import ru.geekbrains.android2.semenov_a2.ui.gallery.GalleryFragment;
+import ru.geekbrains.android2.semenov_a2.ui.options.OptionsFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -99,10 +95,10 @@ public class HomeFragment extends Fragment {
                 skyTexView.setVisibility(View.INVISIBLE);
                 skyImageView.setVisibility(View.INVISIBLE);
                 goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
-                GalleryFragment galleryFragment = new GalleryFragment();
+                OptionsFragment optionsFragment = new OptionsFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 //                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.infoDeskFrame, galleryFragment);
+                transaction.replace(R.id.mainContainerForFragment, optionsFragment);
                 transaction.commit();
             }
         });

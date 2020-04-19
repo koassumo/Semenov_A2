@@ -13,7 +13,7 @@
     <string name="home_second">Home Second</string>
 
     <string name="app_name">Погодное приложение</string>
-    <string name="region">Milan</string>
+    <string name="region">Saratov</string>
     <string name="region_en">Moscow, Russia</string>
     <string name="temperature">+_</string>
     <string name="switch_to_english">english</string>

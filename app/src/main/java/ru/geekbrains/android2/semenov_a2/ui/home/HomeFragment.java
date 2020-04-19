@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -29,6 +30,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import ru.geekbrains.android2.semenov_a2.R;
+import ru.geekbrains.android2.semenov_a2.ui.gallery.GalleryFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -78,14 +80,27 @@ public class HomeFragment extends Fragment {
 
         initFonts();
         updateWeatherData(townTextView.getText().toString());
+        setOnGoOptionsSelectBtnClick();
+    }
+
+    private void initFonts(){
+        weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf"); //если в MainActivity, то getActivity(). не нужен
+        skyTexView.setTypeface(weatherFont);
     }
 
 
-
-
-    private void initFonts(){
-//        weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weather.ttf");
-        skyTexView.setTypeface(weatherFont);
+    private void setOnGoOptionsSelectBtnClick() {
+        goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                townTextView.setText("Go");
+                GalleryFragment galleryFragment = new GalleryFragment();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.infoDeskFrame, galleryFragment);
+                transaction.commit();
+            }
+        });
     }
 
     private void updateWeatherData(final String city) {
@@ -221,18 +236,7 @@ public class HomeFragment extends Fragment {
 //        skyImageView.setImageResource(idPicture);
     }
 
-//    private void setOnGoOptionsSelectBtnClick() {
-//        goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, OptionsSelectActivity.class);
-//                intent.putExtra(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
-//                intent.putExtra(Constants.PRESSURE_IS_CHECKED_KEY, isPressureShow);
-//                intent.putExtra(Constants.WIND_IS_CHECKED_KEY, isWindShow);
-//                startActivityForResult(intent, REQUEST_CODE);
-//            }
-//        });
-//    }
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

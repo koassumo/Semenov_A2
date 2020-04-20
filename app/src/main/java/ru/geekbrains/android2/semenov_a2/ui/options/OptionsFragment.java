@@ -75,7 +75,6 @@ public class OptionsFragment extends Fragment {
         windTextView = view.findViewById(R.id.windTextView);
 
         checkTownField();
-        //setDataFromMainActivity();
 
         setOnGoBackMainActivityBtnClick();
         setOnHelpBtnClick();

@@ -50,7 +50,6 @@ public class HomeFragment extends Fragment {
     private Button goOptionsSelectActivityBtn;
 
     private final Handler handler = new Handler();
-    //private final static String LOG_TAG = MainActivity.class.getSimpleName();
     Typeface weatherFont;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -100,7 +99,7 @@ public class HomeFragment extends Fragment {
                 // Вытащим макет диалога
                 final View contentView = getLayoutInflater().inflate(R.layout.alert_dialog_to_know_town, null);
                 // в билдере указываем заголовок окна (можно указывать как ресурс, так и строку)
-                builder.setTitle("Введите имя")
+                builder.setTitle("Введите название города")
                         // Установим макет диалога (можно устанавливать любой view)
                         .setView(contentView)
                         .setPositiveButton("Готово", new DialogInterface.OnClickListener() {
@@ -140,7 +139,6 @@ public class HomeFragment extends Fragment {
                         });
         AlertDialog alert = builder.create();
         alert.show();
-        //Toast.makeText(MainActivity.this, "Диалог открыт", Toast.LENGTH_SHORT).show();
     }
 
     private void setOnGoOptionsSelectBtnClick() {
@@ -293,45 +291,7 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-        skyTexView.setText(id + " ww " + icon);
-//        int idPicture = getResources().getIdentifier(skyPictureName, "drawable", getN);
-//        skyImageView.setImageResource(idPicture);
+        skyTexView.setText(id + ", " + icon);
     }
-
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode != REQUEST_CODE) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//            return;
-//        }
-//        if (resultCode == RESULT_OK) {
-//            townTextView.setText(data.getStringExtra(Constants.TOWN_DATA_KEY));
-//            isPressureShow = data.getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true);
-//            isWindShow = data.getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true);
-//            if (isPressureShow) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
-//            if (isWindShow) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
-//            updateWeatherData(townTextView.getText().toString());
-//        }
-//        updateWeatherData(townTextView.getText().toString());
-//    }
-
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
-//        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-//        saveInstanceState.putString(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
-//        super.onSaveInstanceState(saveInstanceState);
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
-//        super.onRestoreInstanceState(saveInstanceState);
-//        townTextView.setText(saveInstanceState.getString(Constants.TOWN_DATA_KEY));
-//        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-//    }
-
-
-
 
 }

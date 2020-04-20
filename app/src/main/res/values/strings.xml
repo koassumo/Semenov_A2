@@ -65,4 +65,5 @@
     <string name="press_button">Город не найден</string>
     <string name="button">OK</string>
     <string name="button_change_town">Изменить</string>
+    <string name="yandex_link">https://yandex.ru/pogoda/</string>
 </resources>

@@ -36,7 +36,7 @@
     <string name="checkbox_atmo_title">атмосферное давление</string>
     <string name="button_back">Назад</string>
     <string name="button_help">help</string>
-    <string name="button_options_select_title">Изменить</string>
+    <string name="button_options_select_title">Options</string>
     <string name="desc">any_image</string>
     <string name="button_go_url">посмотреть погоду в яндексе</string>
 
@@ -64,4 +64,5 @@
     <string name="exclamation">Ошибка</string>
     <string name="press_button">Город не найден</string>
     <string name="button">OK</string>
+    <string name="button_change_town">Изменить</string>
 </resources>

@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
     private ImageView skyImageView;
     private boolean isPressureShow = true;
     private boolean isWindShow = true;
+    private Button changeTownBtn;
     private Button goOptionsSelectActivityBtn;
 
     private final Handler handler = new Handler();
@@ -76,16 +77,46 @@ public class HomeFragment extends Fragment {
         windTextView = view.findViewById(R.id.windTextView);
         skyTexView = view.findViewById(R.id.skyTextView);
         skyImageView = view.findViewById(R.id.skyImageView);
+        changeTownBtn = view.findViewById(R.id.changeTownBtn);
         goOptionsSelectActivityBtn = view.findViewById(R.id.goOptionsSelectActivityBtn);
 
         initFonts();
         updateWeatherData(townTextView.getText().toString());
+        setOnChangeTownBtnClick();
         setOnGoOptionsSelectBtnClick();
     }
 
     private void initFonts(){
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf"); //если в MainActivity, то getActivity(). не нужен
         skyTexView.setTypeface(weatherFont);
+    }
+
+    private void setOnChangeTownBtnClick() {
+        changeTownBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Создаем билдер и передаем контекст приложения
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Вытащим макет диалога
+                final View contentView = getLayoutInflater().inflate(R.layout.alert_dialog_to_know_town, null);
+                // в билдере указываем заголовок окна (можно указывать как ресурс, так и строку)
+                builder.setTitle("Введите имя")
+                        // Установим макет диалога (можно устанавливать любой view)
+                        .setView(contentView)
+                        .setPositiveButton("Готово", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                EditText editText = contentView.findViewById(R.id.editText);
+                                Toast.makeText(getActivity(), String.format("Введено: %s", editText.getText().toString()), Toast.LENGTH_SHORT)
+                                        .show();
+                                townTextView.setText(editText.getText().toString());
+                                updateWeatherData(editText.getText().toString());
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
     }
 
     public void showAlertDialog() {
@@ -112,30 +143,6 @@ public class HomeFragment extends Fragment {
         //Toast.makeText(MainActivity.this, "Диалог открыт", Toast.LENGTH_SHORT).show();
     }
 
-
-    public void showDialogToKnowTown() {
-        // Создаем билдер и передаем контекст приложения
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Вытащим макет диалога
-        final View contentView = getLayoutInflater().inflate(R.layout.alert_dialog_to_know_town, null);
-        // в билдере указываем заголовок окна (можно указывать как ресурс, так и строку)
-        builder.setTitle("Введите имя")
-                // Установим макет диалога (можно устанавливать любой view)
-                .setView(contentView)
-                .setPositiveButton("Готово", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        EditText editText = contentView.findViewById(R.id.editText);
-                        Toast.makeText(getActivity(), String.format("Введено: %s", editText.getText().toString()), Toast.LENGTH_SHORT)
-                                .show();
-                        townTextView.setText(editText.getText().toString());
-                        updateWeatherData(editText.getText().toString());
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
     private void setOnGoOptionsSelectBtnClick() {
         goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +153,7 @@ public class HomeFragment extends Fragment {
                 windTextView.setVisibility(View.INVISIBLE);
                 skyTexView.setVisibility(View.INVISIBLE);
                 skyImageView.setVisibility(View.INVISIBLE);
+                changeTownBtn.setVisibility(View.INVISIBLE);
                 goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
                 OptionsFragment optionsFragment = new OptionsFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
@@ -165,6 +173,7 @@ public class HomeFragment extends Fragment {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            showAlertDialog();
                             Toast.makeText(getContext(), R.string.place_not_found,
                                     Toast.LENGTH_LONG).show();
                         }

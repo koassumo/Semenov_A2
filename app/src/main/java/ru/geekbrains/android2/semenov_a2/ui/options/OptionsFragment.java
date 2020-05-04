@@ -116,14 +116,14 @@ public class OptionsFragment extends Fragment {
         goBackMainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
-                goHelpInstructionActivityBtn.setVisibility(View.INVISIBLE);
-                loginName.setVisibility(View.INVISIBLE);
-                townSelectEditView.setVisibility(View.INVISIBLE);
-                pressureCheckBox.setVisibility(View.INVISIBLE);
-                pressureTextView.setVisibility(View.INVISIBLE);
-                windCheckBox.setVisibility(View.INVISIBLE);
-                windTextView.setVisibility(View.INVISIBLE);
+//                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
+//                goHelpInstructionActivityBtn.setVisibility(View.INVISIBLE);
+//                loginName.setVisibility(View.INVISIBLE);
+//                townSelectEditView.setVisibility(View.INVISIBLE);
+//                pressureCheckBox.setVisibility(View.INVISIBLE);
+//                pressureTextView.setVisibility(View.INVISIBLE);
+//                windCheckBox.setVisibility(View.INVISIBLE);
+//                windTextView.setVisibility(View.INVISIBLE);
                 HomeFragment homeFragment = new HomeFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainContainerForFragment, homeFragment);
@@ -136,14 +136,14 @@ public class OptionsFragment extends Fragment {
         goHelpInstructionActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
-                goHelpInstructionActivityBtn.setVisibility(View.INVISIBLE);
-                loginName.setVisibility(View.INVISIBLE);
-                townSelectEditView.setVisibility(View.INVISIBLE);
-                pressureCheckBox.setVisibility(View.INVISIBLE);
-                pressureTextView.setVisibility(View.INVISIBLE);
-                windCheckBox.setVisibility(View.INVISIBLE);
-                windTextView.setVisibility(View.INVISIBLE);
+//                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
+//                goHelpInstructionActivityBtn.setVisibility(View.INVISIBLE);
+//                loginName.setVisibility(View.INVISIBLE);
+//                townSelectEditView.setVisibility(View.INVISIBLE);
+//                pressureCheckBox.setVisibility(View.INVISIBLE);
+//                pressureTextView.setVisibility(View.INVISIBLE);
+//                windCheckBox.setVisibility(View.INVISIBLE);
+//                windTextView.setVisibility(View.INVISIBLE);
                 HelpFragment helpFragment = new HelpFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainContainerForFragment, helpFragment);

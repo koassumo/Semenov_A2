@@ -145,14 +145,14 @@ public class HomeFragment extends Fragment {
         goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                townTextView.setVisibility(View.INVISIBLE);
-                temperatureTextView.setVisibility(View.INVISIBLE);
-                pressureTextView.setVisibility(View.INVISIBLE);
-                windTextView.setVisibility(View.INVISIBLE);
-                skyTexView.setVisibility(View.INVISIBLE);
-                skyImageView.setVisibility(View.INVISIBLE);
-                changeTownBtn.setVisibility(View.INVISIBLE);
-                goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
+//                townTextView.setVisibility(View.INVISIBLE);
+//                temperatureTextView.setVisibility(View.INVISIBLE);
+//                pressureTextView.setVisibility(View.INVISIBLE);
+//                windTextView.setVisibility(View.INVISIBLE);
+//                skyTexView.setVisibility(View.INVISIBLE);
+//                skyImageView.setVisibility(View.INVISIBLE);
+//                changeTownBtn.setVisibility(View.INVISIBLE);
+//                goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
                 OptionsFragment optionsFragment = new OptionsFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 //                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -161,6 +161,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 
     private void updateWeatherData(final String town) {
         new Thread() {

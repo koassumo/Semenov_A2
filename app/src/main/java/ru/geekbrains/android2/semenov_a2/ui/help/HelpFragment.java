@@ -56,8 +56,8 @@ public class HelpFragment extends Fragment {
         goBackMainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
-                goUrlBtn.setVisibility(View.INVISIBLE);
+//                goBackMainActivityBtn.setVisibility(View.INVISIBLE);
+//                goUrlBtn.setVisibility(View.INVISIBLE);
                 OptionsFragment optionsFragment = new OptionsFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainContainerForFragment, optionsFragment);

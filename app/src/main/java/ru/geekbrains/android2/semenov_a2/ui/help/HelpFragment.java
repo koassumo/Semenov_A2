@@ -70,7 +70,7 @@ public class HelpFragment extends Fragment {
         goUrlBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String urlText = "https://yandex.ru/pogoda/";
+                final String urlText = getString(R.string.yandex_link);
                 Uri uri = Uri.parse(urlText);
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(browserIntent);

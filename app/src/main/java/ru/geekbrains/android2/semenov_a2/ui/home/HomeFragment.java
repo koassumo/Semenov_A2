@@ -1,5 +1,6 @@
 package ru.geekbrains.android2.semenov_a2.ui.home;
 
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -25,6 +28,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import ru.geekbrains.android2.semenov_a2.MainActivity;
 import ru.geekbrains.android2.semenov_a2.R;
 import ru.geekbrains.android2.semenov_a2.ui.options.OptionsFragment;
 
@@ -42,10 +46,10 @@ public class HomeFragment extends Fragment {
     private ImageView skyImageView;
     private boolean isPressureShow = true;
     private boolean isWindShow = true;
+    private Button changeTownBtn;
     private Button goOptionsSelectActivityBtn;
 
     private final Handler handler = new Handler();
-    //private final static String LOG_TAG = MainActivity.class.getSimpleName();
     Typeface weatherFont;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -72,16 +76,69 @@ public class HomeFragment extends Fragment {
         windTextView = view.findViewById(R.id.windTextView);
         skyTexView = view.findViewById(R.id.skyTextView);
         skyImageView = view.findViewById(R.id.skyImageView);
+        changeTownBtn = view.findViewById(R.id.changeTownBtn);
         goOptionsSelectActivityBtn = view.findViewById(R.id.goOptionsSelectActivityBtn);
 
         initFonts();
         updateWeatherData(townTextView.getText().toString());
+        setOnChangeTownBtnClick();
         setOnGoOptionsSelectBtnClick();
     }
 
     private void initFonts(){
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf"); //если в MainActivity, то getActivity(). не нужен
         skyTexView.setTypeface(weatherFont);
+    }
+
+    private void setOnChangeTownBtnClick() {
+        changeTownBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Создаем билдер и передаем контекст приложения
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Вытащим макет диалога
+                final View contentView = getLayoutInflater().inflate(R.layout.alert_dialog_to_know_town, null);
+                // в билдере указываем заголовок окна (можно указывать как ресурс, так и строку)
+                builder.setTitle("Введите название города")
+                        // Установим макет диалога (можно устанавливать любой view)
+                        .setView(contentView)
+                        .setPositiveButton("Готово", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                EditText editText = contentView.findViewById(R.id.editText);
+                                Toast.makeText(getActivity(), String.format("Введено: %s", editText.getText().toString()), Toast.LENGTH_SHORT)
+                                        .show();
+                                townTextView.setText(editText.getText().toString());
+                                updateWeatherData(editText.getText().toString());
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+    }
+
+    public void showAlertDialog() {
+        // Создаем билдер и передаем контекст приложения
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        // в билдере указываем заголовок окна (можно указывать как ресурс, так и строку)
+        builder.setTitle(R.string.exclamation)
+                // указываем сообщение в окне (также есть вариант со строковым параметром)
+                .setMessage(R.string.press_button)
+                // можно указать и пиктограмму
+                .setIcon(R.mipmap.ic_launcher_round)
+                // из этого окна нельзя выйти кнопкой back
+                .setCancelable(false)
+                // устанавливаем кнопку (название кнопки также можно задавать строкой)
+                .setPositiveButton(R.string.button,
+                        // Ставим слушатель, нажатие будем обрабатывать
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getActivity(), "Кнопка нажата", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void setOnGoOptionsSelectBtnClick() {
@@ -94,6 +151,7 @@ public class HomeFragment extends Fragment {
                 windTextView.setVisibility(View.INVISIBLE);
                 skyTexView.setVisibility(View.INVISIBLE);
                 skyImageView.setVisibility(View.INVISIBLE);
+                changeTownBtn.setVisibility(View.INVISIBLE);
                 goOptionsSelectActivityBtn.setVisibility(View.INVISIBLE);
                 OptionsFragment optionsFragment = new OptionsFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
@@ -104,15 +162,17 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void updateWeatherData(final String city) {
+
+    private void updateWeatherData(final String town) {
         new Thread() {
             @Override
             public void run() {
-                final JSONObject jsonObject = WeatherDataLoader.getJSONData(city);
+                final JSONObject jsonObject = WeatherDataLoader.getJSONData(town);
                 if(jsonObject == null) {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            showAlertDialog();
                             Toast.makeText(getContext(), R.string.place_not_found,
                                     Toast.LENGTH_LONG).show();
                         }
@@ -232,45 +292,7 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-        skyTexView.setText(id + " ww " + icon);
-//        int idPicture = getResources().getIdentifier(skyPictureName, "drawable", getN);
-//        skyImageView.setImageResource(idPicture);
+        skyTexView.setText(id + ", " + icon);
     }
-
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode != REQUEST_CODE) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//            return;
-//        }
-//        if (resultCode == RESULT_OK) {
-//            townTextView.setText(data.getStringExtra(Constants.TOWN_DATA_KEY));
-//            isPressureShow = data.getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true);
-//            isWindShow = data.getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true);
-//            if (isPressureShow) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
-//            if (isWindShow) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
-//            updateWeatherData(townTextView.getText().toString());
-//        }
-//        updateWeatherData(townTextView.getText().toString());
-//    }
-
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
-//        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-//        saveInstanceState.putString(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
-//        super.onSaveInstanceState(saveInstanceState);
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
-//        super.onRestoreInstanceState(saveInstanceState);
-//        townTextView.setText(saveInstanceState.getString(Constants.TOWN_DATA_KEY));
-//        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-//    }
-
-
-
 
 }

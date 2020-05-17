@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     Typeface weatherFont;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
